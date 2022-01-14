@@ -1,0 +1,92 @@
+#!/bin/bash
+toolname="cybergisx"
+platform="CyberGISX"
+version="0.8.0"
+
+# helper functions
+export SCRIPT_COLOR="\e[96m"
+print () {
+    echo -e "$SCRIPT_COLOR  $1\033[0m"
+}
+
+is_valid_dir () {
+  user_input="$2"
+  if [[ -z "${user_input// }" ]]; then
+    print "Input is invalid: blank or white space."
+    return 1
+  elif [[ "$2" == *"*"* ]]; then
+    print "Inputs with wildcards (*) are not currently supported."
+    return 1
+  elif [[ -d "$1/$user_input" ]]; then
+    return 0
+  fi
+  print "Input '$1/$user_input' is not a valid directory."
+  return 1
+}
+
+helpfunc () {
+    print "This is $toolname (version $version), designed to help manage compute"
+    print "environments here on $platform. Your options are:"
+    print "  --help [-h]:             to display this help message."
+    print "  --version [-v]:          to see version information."
+    print "  --avail [-a]:            to see available $platform kernels."
+    print "  --install [-i] <kernel>: to install an available kernel."
+    print "  --personal [-p]:         to see personal kernels."
+    print "  --remove-personal [-rp]: to remove a personal kernel."
+}
+
+
+while (( $# > 0 ))
+do
+    opt="$1"
+    shift
+
+    case $opt in
+    -h | --help)
+        helpfunc
+        exit 0
+        ;;
+    -v | --version)
+        print "$toolname version $version"
+        exit 0
+        ;;
+    -a | --avail)  # Example with an operand
+        print "Kernels available to install with $toolname:"
+        ls $CIGI_EB_KERNEL_DIR
+        exit 0
+        ;;
+    -i | --install)  # Example with an operand
+        to_install="$1"
+        is_valid_dir "${CIGI_EB_KERNEL_DIR}" "${to_install}"
+        if [[ "$?" == "1" ]]; then
+          exit 1
+        fi
+        print "Installing $1..."
+        cp -r $CIGI_EB_KERNEL_DIR/$to_install $IN_CONTAINER_KERNEL_PATH
+	cp -r $CIGI_EB_KERNEL_DIR/$to_install $IN_CONTAINER_PERSONAL_KERNELS
+        exit 0
+        ;;
+    -p | --personal)  # Show personal kernels
+        print "Your personal kernels are:"
+        ls $IN_CONTAINER_PERSONAL_KERNELS
+        exit 0
+        ;;
+    -rp | --remove-personal)  # remove personal kernels
+        to_remove="$1"
+        is_valid_dir "${IN_CONTAINER_PERSONAL_KERNELS}" "${to_remove}"
+        if [[ "$?" == "1" ]]; then
+          exit 1
+        fi
+        rm -rf $IN_CONTAINER_PERSONAL_KERNELS/$to_remove
+        exit 0
+        ;;
+    --* | -*)
+        print "Invalid option: '$opt'" >&2
+        exit 1
+        ;;
+    *)
+        # end of long options
+        break;
+        ;;
+   esac
+done
