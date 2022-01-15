@@ -35,5 +35,14 @@ Options:
 
 ## TODO:
 
-* ~~Replicate functionality in click.~~
-* Handle personal kernels without duplicating config. Transition to JSON/YAML?
+* ~~Replicate functionality in click.~~ The functions with suffix `_dir` do this
+* ~~Handle personal kernels without duplicating config. Transition to JSON/YAML?~~ Transitioned to JSON (functions with `_json` suffix)
+* ~~Write function to transition configs to JSON/YAML~~ See `transition_pk_dir2json`
+* ~~Write function to install personal kernels to in_container_kernel_path~~ Added as hidden `-s`/`--startup` option
+* Automated testing
+
+
+## TODO for Startup Scripts
+
+* Add $CIGI_PERSONAL_CONFIG to `set_environment.sh`
+* Call with `-s` in `pre-start-notebook.sh`
