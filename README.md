@@ -1,3 +1,39 @@
 # cybergisx-cli
 
 The repo for the `cybergisx` and `cjw` command line interface.
+
+The [original version was written in Bash](bash). We are currently rewriting to use [Python with the click API](python) to introduce more functionality and easier testing.
+
+
+Bash functionality (deployed):
+
+```
+  This is cybergisx (version 2021-09), designed to help manage compute
+  environments here on CyberGISX. Your options are:
+    --help [-h]:             to display this help message.
+    --version [-v]:          to see version information.
+    --avail [-a]:            to see available CyberGISX kernels.
+    --install [-i] <kernel>: to install an available kernel.
+    --personal [-p]:         to see personal kernels.
+    --remove-personal [-rp]: to remove a personal kernel.
+```
+
+Current Python functionality:
+
+```
+Usage: cybergisx.py [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  -a, --avail                  to see available CyberGISX kernels.
+  -i, --install PATH           to install an available kernel.
+  -p, --personal               to see your personal kernels.
+  -rp, --remove-personal PATH  to remove a personal kernel.
+  --version                    Show the version and exit.
+  --help                       Show this message and exit.
+```
+
+
+## TODO:
+
+* ~~Replicate functionality in click.~~
+* Handle personal kernels without duplicating config. Transition to JSON/YAML?
