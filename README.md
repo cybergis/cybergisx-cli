@@ -39,7 +39,9 @@ Options:
 * ~~Handle personal kernels without duplicating config. Transition to JSON/YAML?~~ Transitioned to JSON (functions with `_json` suffix)
 * ~~Write function to transition configs to JSON/YAML~~ See `transition_pk_dir2json`
 * ~~Write function to install personal kernels to in_container_kernel_path~~ Added as hidden `-s`/`--startup` option
-* Automated testing
+* ~~Add `-h` option for help~~ Added to `@click.version_option` as param_decls. [See docs](https://click.palletsprojects.com/en/8.0.x/api/#click.version_option)
+* ~~Move dir->json transition to startup~~ Done
+* Automated testing: https://click.palletsprojects.com/en/8.0.x/testing/
 
 
 ## TODO for Startup Scripts
