@@ -164,9 +164,9 @@ def write_personal_kernel_json(list_of_kernels):
 
 @click.group(context_settings=CONTEXT_SETTINGS, invoke_without_command=True, no_args_is_help=True)
 @click.option("-a", "--avail", is_flag=True, help="See available {} kernels.".format(PLATFORM))
-@click.option("-i", "--install", type=click.Path(), help="Install an available kernel.")
+@click.option("-i", "--install", type=str, help="Install an available kernel.")
 @click.option("-p", "--personal", is_flag=True, help="See your personal kernels.")
-@click.option("-rp", "--remove-personal", type=click.Path(), help="Remove a personal kernel.")
+@click.option("-rp", "--remove-personal", type=str, help="Remove a personal kernel.")
 @click.option("-s", "--startup", is_flag=True, help="Performs startup tasks.", hidden=True)
 @click.version_option(__version__, "-v", "--version")
 def cli(avail, install, personal, remove_personal, startup):
