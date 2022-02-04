@@ -1,1 +1,9 @@
 site_name: cybergisx-cli
+
+repo_url: https://github.com/cybergis/cybergisx-cli
+
+theme:
+    name: material
+    features:
+        - navigation.instant
+        - search.highlight

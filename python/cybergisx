@@ -93,7 +93,7 @@ def print_personal_kernels():
         for kernel in personal_kernels:
             print("  * {}".format(kernel))
     else:
-        print("No personal kernels found at {}".format(IN_CONTAINER_PERSONAL_KERNELS))
+        print("No personal kernels found at {}".format(CIGI_PERSONAL_CONFIG))
 
 
 def remove_personal_kernel_dir(to_remove):
