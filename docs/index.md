@@ -1,7 +1,5 @@
 # cybergisx-cli
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
-
 ## Command Line Usage
 
 Running `cybergisx` from the command line should display the following help message:

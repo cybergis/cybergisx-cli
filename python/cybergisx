@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import click
+import copy
 import json
 import os
 import shutil
@@ -51,6 +52,15 @@ def get_personal_kernels_json():
         return []  # this is expected for now
 
 
+def get_nonstandard_personal_kernels():
+    """
+    Gets the non-standard (non-cybergisx provided) kernels
+    """
+    dir_kernels = get_personal_kernels_dir()
+    validated_dir_kernels = validate_personal_kernels(copy.deepcopy(dir_kernels))
+    return list(set(dir_kernels) - set(validated_dir_kernels))
+
+
 def install_personal_kernels_dir(install):
     kernels = get_available_kernels()
     if install in kernels:
@@ -88,12 +98,17 @@ def print_avail_kernels():
 def print_personal_kernels():
     """Prints the user's personal kernels"""
     personal_kernels = get_personal_kernels_json()
+    nonstandard_kernels = get_nonstandard_personal_kernels()
     if len(personal_kernels) > 0:
-        print("Your personal kernels are:")
+        print(f"Your {TOOLNAME} provided personal kernels are:")
         for kernel in personal_kernels:
-            print("  * {}".format(kernel))
-    else:
-        print("No personal kernels found at {}".format(CIGI_PERSONAL_CONFIG))
+            print(f"  * {kernel}")
+    if len(nonstandard_kernels) > 0:
+        print("Your user-created personal kernels are:")
+        for kernel in nonstandard_kernels:
+            print(f"  * {kernel}")
+    if (len(personal_kernels) + len(nonstandard_kernels)) <= 0:
+        print("No personal kernels found at {CIGI_PERSONAL_CONFIG}")
 
 
 def remove_personal_kernel_dir(to_remove):
@@ -119,6 +134,7 @@ def run_startup_tasks():
     Runs startup tasks:
 
     * Installs kernels to IN_CONTAINER_KERNEL_PATH
+    * Installs user-created (non-standard) kernels
     """
     transition_pk_dir2json()
     personal_kernels = get_personal_kernels_json()
@@ -127,11 +143,18 @@ def run_startup_tasks():
         if personal_kernel in kernels:
             to_install_dir = os.path.join(CIGI_EB_KERNEL_DIR, personal_kernel)
             copy_dir(to_install_dir, os.path.join(IN_CONTAINER_KERNEL_PATH, personal_kernel))
+    # install non-standard kernels
+    user_kernels = get_nonstandard_personal_kernels()
+    for personal_kernel in user_kernels:
+        to_install_dir = os.path.join(IN_CONTAINER_PERSONAL_KERNELS, personal_kernel)
+        copy_dir(to_install_dir, os.path.join(IN_CONTAINER_KERNEL_PATH, personal_kernel))
 
 
 def transition_pk_dir2json():
-    """Function for transitioning personal kernels from directory-based
-    to JSON-based configuration"""
+    """
+    Function for transitioning personal kernels from directory-based
+    to JSON-based configuration
+    """
     dir_pk = get_personal_kernels_dir()
     combined_pk = dir_pk + get_personal_kernels_json()
     write_personal_kernel_json(combined_pk)
