@@ -14,7 +14,7 @@ The cybergisx CLI is designed to help users manage the kernels available within 
 
 Running `cybergisx` from the command line should display the following help message:
 
-    Usage: cybergisx.py [OPTIONS] COMMAND [ARGS]...
+    Usage: cybergisx [OPTIONS] COMMAND [ARGS]...
 
     Options:
     -a, --avail                  See available CyberGISX kernels.
@@ -33,7 +33,7 @@ Prints the available kernels to the terminal.
 
 #### `-i/--install TEXT`
 
-Installs an available kernel (see `-a/--avail`). PATH is kernel to install.
+Installs an available kernel (see `-a/--avail`). TEXT is kernel to install.
 
     cybergisx -i python3
     cybergisx --install python3
