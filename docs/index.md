@@ -1,5 +1,15 @@
 # cybergisx-cli
 
+Welcome to the documentation for cybergisx-cli!
+
+This is a Command Line Interface (CLI) for the CyberGISX platform. To learn more about CyberGISX, check out the following links:
+
+* [CyberGISX Hub](https://cybergisxhub.cigi.illinois.edu/)
+* [CyberGISX](https://cybergisx.cigi.illinois.edu/)
+* [CyberGIS Center](https://cybergis.illinois.edu/)
+
+The cybergisx CLI is designed to help users manage the kernels available within their container.
+
 ## Command Line Usage
 
 Running `cybergisx` from the command line should display the following help message:
