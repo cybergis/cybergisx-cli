@@ -1,6 +1,6 @@
 # cybergisx-cli
 
-The repo for the `cybergisx` and `cjw` command line interface.
+The repo for the `cybergisx` and `cjw` command line interface. [To learn more, check out the docs](https://cybergis.github.io/cybergisx-cli/).
 
 The [original version was written in Bash](bash). We are currently rewriting to use [Python with the click API](python) to introduce more functionality and easier testing.
 
