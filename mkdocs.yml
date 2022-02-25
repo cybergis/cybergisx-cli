@@ -7,3 +7,9 @@ theme:
     features:
         - navigation.instant
         - search.highlight
+
+nav:
+  - Home: 'index.md'
+  - 'User Guide':
+    - 'cybergisx': 'cybergisx.md'
+    - 'cjw': 'cjw.md'

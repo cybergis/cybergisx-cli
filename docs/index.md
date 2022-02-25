@@ -1,70 +1,29 @@
 # cybergisx-cli
 
-Welcome to the documentation for cybergisx-cli!
+![License](https://img.shields.io/github/license/cybergis/cybergisx-cli)
 
-This is a Command Line Interface (CLI) for the CyberGISX platform. To learn more about CyberGISX, check out the following links:
+Welcome to the documentation for cybergisx-cli! The cybergisx-cli is a Command Line Interface (CLI) designed to help users manage the kernels available within their container. It comes in two flavors which are used on two platforms:
+
+* [cybergisx](cybergisx.md) - [CyberGISX](https://cybergisx.cigi.illinois.edu/)
+* [cjw](cjw.md) - [CyberGIS-Jupyter for Water (CJW)](https://go.illinois.edu/cybergis-jupyter-water/)
+
+![CyberGIS-Jupyter logo](img/logo.png)
+
+## cybergisx
+
+To learn more about CyberGISX platform, check out the following links:
 
 * [CyberGISX Hub](https://cybergisxhub.cigi.illinois.edu/)
 * [CyberGISX](https://cybergisx.cigi.illinois.edu/)
 * [CyberGIS Center](https://cybergis.illinois.edu/)
 
-The cybergisx CLI is designed to help users manage the kernels available within their container.
+[See the User Guide for the cybergisx CLI](cybergisx.md).
 
-## Command Line Usage
 
-Running `cybergisx` from the command line should display the following help message:
+## cjw
 
-    Usage: cybergisx [OPTIONS] COMMAND [ARGS]...
+To learn more about the CyberGIS-Jupyter for Water (CJW) platform, check out the following links:
 
-    Options:
-    -a, --avail                  See available CyberGISX kernels.
-    -i, --install TEXT           Install an available kernel.
-    -p, --personal               See your personal kernels.
-    -rp, --remove-personal TEXT  Remove a personal kernel.
-    -v, --version                Show the version and exit.
-    -h, --help                   Show this message and exit.
+* [CyberGIS-Jupyter for Water (CJW)](https://go.illinois.edu/cybergis-jupyter-water/)
 
-#### `-a/--avail`
-
-Prints the available kernels to the terminal.
-
-    cybergisx -a
-    cybergisx --avail
-
-#### `-i/--install TEXT`
-
-Installs an available kernel (see `-a/--avail`). TEXT is kernel to install.
-
-    cybergisx -i python3
-    cybergisx --install python3
-
-#### `-p/--personal`
-
-Prints the personal kernels you have installed.
-
-    cyberigsx -p
-    cyberigsx --personal
-
-#### `-rp/--remove-personal TEXT`
-
-Removes a kernel from your list of personal kernels (see `-p/--personal`). Note that
-this does not automatically remove the kernel from the dropdown, but it will no longer
-appear after a container restart unless it is a kernel installed by default
-
-    cybergisx -rp
-    cybergisx --remove-personal
-
-#### `-v/--version`
-
-Prints the version of the cybergisx command line tool.
-
-    cybergisx -v
-    cybergisx --version
-
-#### `-h/--help`
-
-Prints the help text for the cybergisx command line tool.
-
-    cybergisx -h
-    cybergisx --help
-
+[See the User Guide for the cjw CLI](cjw.md).

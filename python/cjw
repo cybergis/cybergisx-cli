@@ -5,8 +5,8 @@ import json
 import os
 import shutil
 
-TOOLNAME = "cybergisx"
-PLATFORM = "CyberGISX"
+TOOLNAME = "cjw"
+PLATFORM = "CJW"
 __version__ = "0.9.0"
 
 CIGI_EB_KERNEL_DIR = os.getenv("CIGI_EB_KERNEL_DIR")
